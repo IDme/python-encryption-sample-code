@@ -122,9 +122,9 @@ class Decryptor:
 def main():
     decryptor = Decryptor("private-key.pem")
 
-    encoded_encrypted_session_key = "VtVSUzoxeg0xi41ffrjlt0tAt+fyQIrnSfYiQbQxtbqhHk9/z6qFQv1GedqmXrl24eI+ydJOu6iMwLb2UK6z7yt7Hd2Q36eO+1xuIHiW9jNA2SeiSpeqFgGWuTDgjmbbC6GJGhT/AosCAv6Pzm5fPHDmg5NQL6B8M6c6Jf5HSqXvzHEgUMeO1Yi5AG0pnuwOST45ZtoMlFM7glpP3fow0ql8v1E5n0QUcgI36PHSgjq56PNTq+h9sWBoMgZ1OXpOBTrWbCu7+Gr1wNGpGbL90oT0jjzPrn4/dam4brTy4w2NZHYHl35FMaRQdvJx00WptxTRDTIUTy8suHjjRcndEw=="
-    encoded_encrypted_data = "Rm2N600M6QPA02lUDQZG3w=="
-    encoded_iv = "kwB9bgAEwiQLk6pE2QCysQ=="
+    encoded_encrypted_session_key = "INSERT_ENCODED_ENCRYPTED_SESSION_KEY"
+    encoded_encrypted_data = "INSERT_ENCODED_ENCRYPTED_DATA"
+    encoded_iv = "INSERT_ENCODED_IV"
 
     result = decryptor.execute(encoded_encrypted_session_key, encoded_encrypted_data, encoded_iv)
     print(result)
