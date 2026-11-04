@@ -2,6 +2,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import padding as asym_padding
 from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives import padding as sym_padding
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 import base64
 from typing import Optional
@@ -90,7 +91,10 @@ class Decryptor:
                 backend=default_backend()
             )
             decryptor = decipher.decryptor()
-            return decryptor.update(base64.b64decode(data)) + decryptor.finalize()
+            padded_data = decryptor.update(base64.b64decode(data)) + decryptor.finalize()
+            # AES-CBC data is PKCS7-padded to the block size; remove the padding.
+            unpadder = sym_padding.PKCS7(algorithms.AES.block_size).unpadder()
+            return unpadder.update(padded_data) + unpadder.finalize()
         except Exception as e:
             print(f"Error during AES decryption: {e}")
             return None
